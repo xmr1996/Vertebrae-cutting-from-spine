@@ -92,11 +92,11 @@ intensity = np.array(intensity)
 print(intensity)
 
 
-tck, u = interpolate.splprep([x_sample_c,y_sample_c,z_sample_c], s=2)
+tck, u = interpolate.splprep([x_sample_c,y_sample_c,z_sample_c, intensity], s=2)
 u_fine = np.linspace(0,1,200)
-x_c, y_c, z_c = interpolate.splev(u_fine, tck)
+x_c, y_c, z_c, i_c= interpolate.splev(u_fine, tck)
 
-
+print(i_c)
 
 
 x_p = x_c / pix_spacing[0]
@@ -121,3 +121,6 @@ plt.show()
 
 
 # 50 * 50 we want 200*200
+#(5.4,10.2,20.2) is the center cordinates
+#(1.5,2.4,19)
+# data_set[100.2][20.5][50.4]
