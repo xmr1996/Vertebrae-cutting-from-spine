@@ -54,8 +54,9 @@ def perpendicular(x1, y1, x2, y2):
     plt.figure()
     plt.plot([x1,x2], [y1,y2])
     plt.plot([x1,xnew], [y1,ynew])
+    plt.show()
     
     return xnew, ynew, rnew
 
-xnew, ynew, rnew = perpendicular(10, 15, -17, 90)
-print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew))
+# xnew, ynew, rnew = perpendicular(10, 15, -17, 90)
+# print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew))

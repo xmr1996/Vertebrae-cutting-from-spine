@@ -95,6 +95,10 @@ print(intensity)
 tck, u = interpolate.splprep([x_sample_c,y_sample_c,z_sample_c, intensity], s=2)
 u_fine = np.linspace(0,1,200)
 x_c, y_c, z_c, i_c= interpolate.splev(u_fine, tck)
+np.savetxt('test.txt', np.column_stack((np.round(x_c, decimals=2), np.round(y_c, decimals=2), np.round(z_c, decimals=2))),
+           fmt='%.2f',delimiter=', ')
+
+
 
 print(i_c)
 
@@ -118,9 +122,14 @@ ax3d.plot(x_c, y_c, z_c, 'go')
 fig2.show()
 plt.show()
 
+from create_plane import perpendicular
 
+xnew, ynew, rnew = perpendicular(10, 15, -17, 90)
+print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew))
 
 # 50 * 50 we want 200*200
 #(5.4,10.2,20.2) is the center cordinates
 #(1.5,2.4,19)
 # data_set[100.2][20.5][50.4]
+# 82.56 - 129.04 = 37.48
+#
