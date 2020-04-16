@@ -120,12 +120,15 @@ fig2 = plt.figure(2)
 ax3d = fig2.add_subplot(111, projection='3d')
 ax3d.plot(x_c, y_c, z_c, 'go')
 fig2.show()
-plt.show()
+# plt.show()
 
 from create_plane import perpendicular
 
 xnew, ynew, rnew = perpendicular(10, 15, -17, 90)
 print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew))
+
+
+
 
 # 50 * 50 we want 200*200
 #(5.4,10.2,20.2) is the center cordinates
@@ -133,3 +136,4 @@ print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew)
 # data_set[100.2][20.5][50.4]
 # 82.56 - 129.04 = 37.48
 #
+#testing 
