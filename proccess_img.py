@@ -90,18 +90,17 @@ for i in range(36):
 
 intensity = np.array(intensity)
 print(intensity)
+plt.plot(intensity)
+plt.show()
 
-
+sampling_amount = 200
 tck, u = interpolate.splprep([x_sample_c,y_sample_c,z_sample_c, intensity], s=2)
-u_fine = np.linspace(0,1,200)
+u_fine = np.linspace(0,1,sampling_amount)
 x_c, y_c, z_c, i_c= interpolate.splev(u_fine, tck)
 np.savetxt('test.txt', np.column_stack((np.round(x_c, decimals=2), np.round(y_c, decimals=2), np.round(z_c, decimals=2))),
            fmt='%.2f',delimiter=', ')
 
-
-
 print(i_c)
-
 
 x_p = x_c / pix_spacing[0]
 y_p = y_c / pix_spacing[1]
@@ -112,24 +111,25 @@ for i in range(10):
     print("point ",x_p[i], y_p[i], z_p[i])
 print(pix_spacing)
 
-
-
-
-
 fig2 = plt.figure(2)
 ax3d = fig2.add_subplot(111, projection='3d')
 ax3d.plot(x_c, y_c, z_c, 'go')
 fig2.show()
 plt.show()
 
-from create_plane import perpendicular
+from create_plane import create_plane
+average =[]
+for i in range(1, sampling_amount - 1 ):
+    sum, count  = 0,1
+    buffer = create_plane(x_c[i], y_c[i], z_c[i], x_c[i+1], y_c[i+1], z_c[i+1])
+    print(len(buffer))
+    for j in buffer:
+        j[0], j[1], j[2] = j[0]/ pix_spacing[0],j[1]/ pix_spacing[1],j[2]/1.5
+        sum += data_set[int(round(j[1]))][int(round(j[0]))][int(round(j[2]))]
+        count +=1
+    average.append(sum/count)
 
-xnew, ynew, rnew = perpendicular(10, 15, -17, 90)
-print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew))
-
-# 50 * 50 we want 200*200
-#(5.4,10.2,20.2) is the center cordinates
-#(1.5,2.4,19)
-# data_set[100.2][20.5][50.4]
-# 82.56 - 129.04 = 37.48
-#
+average = np.array(average)
+# print(average)
+plt.plot(average)
+plt.show()
