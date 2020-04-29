@@ -67,6 +67,7 @@ def gen_random(ra,rb,rc):
     '''
     random_num_in_range_(a,b) = a + (b-a)*random.uniform
     '''
+    random.seed(10)
     m = [[ra + (rb-ra)*random.uniform(0,1), ra + (rb-ra)*random.uniform(0,1)] for i in range(rc)]
     return m
 

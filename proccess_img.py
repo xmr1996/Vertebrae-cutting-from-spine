@@ -105,11 +105,11 @@ print(i_c)
 x_p = x_c / pix_spacing[0]
 y_p = y_c / pix_spacing[1]
 z_p = z_c /1.5
-
-for i in range(10):
-    print("cordinates: ", x_c[i], y_c[i], z_c[i])
-    print("point ",x_p[i], y_p[i], z_p[i])
-print(pix_spacing)
+#
+# for i in range(10):
+#     print("cordinates: ", x_c[i], y_c[i], z_c[i])
+#     print("point ",x_p[i], y_p[i], z_p[i])
+# print(pix_spacing)
 
 fig2 = plt.figure(2)
 ax3d = fig2.add_subplot(111, projection='3d')
@@ -122,7 +122,11 @@ average =[]
 for i in range(1, sampling_amount - 1 ):
     sum, count  = 0,1
     buffer = create_plane(x_c[i], y_c[i], z_c[i], x_c[i+1], y_c[i+1], z_c[i+1])
+
+
     print(len(buffer))
+    if len(buffer) < 20:
+        print("this is the two point that that giving us trouble ",x_c[i], y_c[i], z_c[i], x_c[i+1], y_c[i+1], z_c[i+1])
     for j in buffer:
         j[0], j[1], j[2] = j[0]/ pix_spacing[0],j[1]/ pix_spacing[1],j[2]/1.5
         sum += data_set[int(round(j[1]))][int(round(j[0]))][int(round(j[2]))]
