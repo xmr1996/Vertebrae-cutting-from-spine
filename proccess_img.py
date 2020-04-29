@@ -130,10 +130,3 @@ print('x-cord: {:,.3f}, y-cord{:,.3f}, length: {:,.3f}'.format(xnew, ynew, rnew)
 
 
 
-# 50 * 50 we want 200*200
-#(5.4,10.2,20.2) is the center cordinates
-#(1.5,2.4,19)
-# data_set[100.2][20.5][50.4]
-# 82.56 - 129.04 = 37.48
-#
-#this is a change in line I did on github
