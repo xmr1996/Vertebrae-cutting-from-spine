@@ -85,7 +85,7 @@ def create_plane(x1,y1,z1,x2,y2,z2):
     dx, dy, dz = x2 - x1, y2 - y1, z2 - z1
     vec1 = [dx, dy, dz]  # Travel along x,y,z axes
 
-    ra, rb = -20, 20  # lower limit, upper limit
+    ra, rb = -25, 25  # lower limit, upper limit
     m = gen_random(ra, rb, no_point)  # Here m contains da and db. Now we will calculate dc.
 
     # fig = plt.figure()
@@ -93,8 +93,10 @@ def create_plane(x1,y1,z1,x2,y2,z2):
 
     x12, y12, z12 = [x1, x2], [y1, y2], [z1, z2]
     # ax.plot3D(x12, y12, z12, 'r')  # Plot the given line
-
-    s = 1  # scaling factor
+    if abs(z2-z1)<=1:
+        s = 0.01  # scaling factor
+    else:
+        s = 0.9  # scaling factor
     for da, db in m:
         # Calculate dc
         dc = third_cord(dx, dy, dz, da, db)

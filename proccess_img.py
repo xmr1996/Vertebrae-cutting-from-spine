@@ -3,6 +3,7 @@ import numpy as np
 import pydicom
 import matplotlib.pyplot as plt
 from scipy import interpolate
+from scipy.signal import argrelextrema
 from mpl_toolkits.mplot3d import Axes3D
 
 path = "./dicom_dataset/66957141_20170406"
@@ -134,6 +135,16 @@ for i in range(1, sampling_amount - 1 ):
     average.append(sum/count)
 
 average = np.array(average)
-# print(average)
+local_min_index = argrelextrema(average, np.less)
+
+local_min = []
+for i in local_min_index:
+    for j in i:
+        buffer = [x_c[j], y_c[j], z_c[j]]
+        print("local minimum at cordinates: ", buffer)
+        local_min.append(buffer)
+
+
+
 plt.plot(average)
 plt.show()
