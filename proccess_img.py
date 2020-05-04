@@ -91,8 +91,7 @@ for i in range(36):
 
 intensity = np.array(intensity)
 print(intensity)
-plt.plot(intensity)
-plt.show()
+
 
 sampling_amount = 200
 tck, u = interpolate.splprep([x_sample_c,y_sample_c,z_sample_c, intensity], s=2)
@@ -101,7 +100,9 @@ x_c, y_c, z_c, i_c= interpolate.splev(u_fine, tck)
 np.savetxt('test.txt', np.column_stack((np.round(x_c, decimals=2), np.round(y_c, decimals=2), np.round(z_c, decimals=2))),
            fmt='%.2f',delimiter=', ')
 
-print(i_c)
+
+def cor_to_point(x_c, y_c, z_c):
+    return int(round(x_c / pix_spacing[0])),  int(round(y_c / pix_spacing[1])), int(round(z_c / 1.5))
 
 x_p = x_c / pix_spacing[0]
 y_p = y_c / pix_spacing[1]
@@ -142,9 +143,12 @@ for i in local_min_index:
     for j in i:
         buffer = [x_c[j], y_c[j], z_c[j]]
         print("local minimum at cordinates: ", buffer)
+        print("local minimum at point: ", x_p[j], y_p[j], z_p[j])
+        print("this is from calling the function ", cor_to_point(x_c[j], y_c[j], z_c[j]))
         local_min.append(buffer)
 
 
 
 plt.plot(average)
 plt.show()
+
