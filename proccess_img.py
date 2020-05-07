@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from scipy import interpolate
 from scipy.signal import argrelextrema
 from mpl_toolkits.mplot3d import Axes3D
+import scipy.io as sio
 
 path = "./dicom_dataset/66957141_20170406"
 
@@ -119,6 +120,8 @@ ax3d.plot(x_c, y_c, z_c, 'go')
 fig2.show()
 plt.show()
 
+
+#plane generation and average graph
 from create_plane import create_plane
 average =[]
 for i in range(1, sampling_amount - 1 ):
@@ -152,3 +155,6 @@ for i in local_min_index:
 plt.plot(average)
 plt.show()
 
+test_dataset = data_set[:,:,2:7]
+print(test_dataset.shape)
+sio.savemat("patch.mat", {"patch": test_dataset })
