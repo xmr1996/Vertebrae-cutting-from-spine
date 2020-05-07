@@ -157,4 +157,5 @@ plt.show()
 
 test_dataset = data_set[:,:,2:7]
 print(test_dataset.shape)
-sio.savemat("patch.mat", {"patch": test_dataset })
+sio.savemat("patch.mat", {"patch": test_dataset})
+sio.savemat("whole_data.mat", {"whole_data": data_set})
