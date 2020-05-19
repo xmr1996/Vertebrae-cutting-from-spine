@@ -73,9 +73,9 @@ def gen_random(ra,rb,rc):
 
 ########################## ENDS ##################################
 def create_plane(x1,y1,z1,x2,y2,z2):
-    no_point = 100  # No. of points you want to generate
+    no_point = 300  # No. of points you want to generate
     store_xyz = []  # Coordinates of the new perpendicular will be stored
-    threshold = 30  # New coordinates will be stored if the length is less than threshold
+    threshold = 40  # New coordinates will be stored if the length is less than threshold
 
     # Two coordinates of the given vector
     # x1, y1, z1 = 104.22, 149.79, 0.00
